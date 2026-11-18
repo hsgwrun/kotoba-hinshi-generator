@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="文章を品詞タグに変換するジェネレーター。">
+  <title>品詞ジェネレーター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/build/kuromoji.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="品詞ジェネレーター ホーム"><span class="brand-mark">品</span><span>HINSHI<span class="brand-light"> / GENERATOR</span></span></a>
+      <span class="version">JAPANESE TEXT TOOL</span>
+    </header>
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-line"></span> TEXT TRANSFORMER</div>
+      <h1>言葉を、<span>品詞</span>に。</h1>
+      <p class="lead">文章を入力するだけ。単語を品詞タグに変換します。</p>
+    </section>
+    <section class="workspace" aria-label="文章変換ツール">
+      <div class="panel input-panel">
+        <div class="panel-heading"><label for="source">INPUT <span>変換したい文章</span></label><span id="char-count" class="counter">0 / 2,000</span></div>
+        <textarea id="source" maxlength="2000" placeholder="例：今日は本当に楽しかった！&#10;思ったより簡単にできたね。"></textarea>
+        <div class="input-footer">
+          <span class="hint">日本語の文章を入力してください</span>
+          <button id="clear" class="text-button" type="button">クリア</button>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="engine-state"><span id="engine-dot" class="status-dot"></span><span id="engine-status">解析エンジンを読み込み中…</span></div>
+        <button id="convert" class="primary-button" type="button" disabled>品詞に変換 <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="panel output-panel">
+        <div class="panel-heading"><div class="output-label">OUTPUT <span>変換結果</span></div><button id="copy" class="copy-button" type="button" disabled><span aria-hidden="true">▢</span> コピー</button></div>
+        <div id="result" class="result empty" aria-live="polite">ここに変換結果が表示されます。</div>
+        <div class="output-footer"><span id="result-count">0 tokens</span><span id="copy-status" role="status"></span></div>
+      </div>
+    </section>
+    <section class="bottom-note"><span class="note-icon">i</span><p>形態素解析エンジン Kuromoji.js を使用しています。解析結果は文脈によって異なる場合があります。</p></section>
+    <footer><span>HINSHI GENERATOR</span><span>MADE FOR WORDS.</span></footer>
+  </main>
+</body>
+</html>
